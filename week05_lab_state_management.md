@@ -243,8 +243,10 @@ class MyApp extends StatelessWidget {
 **คำถาม**: ถ้าต้องเพิ่มหน้าจอ `FavoritesPage` ที่ต้องแสดงรายการที่บันทึกไว้ชุดเดียวกัน แต่ถูก push แยกออกไปเป็นอีก Route หนึ่ง จะเกิดปัญหาอะไรกับโค้ดแบบ Prop Drilling นี้ จงเขียนคำตอบสั้น ๆ 
 
 ```text
-
+ข้อมูล _savedItems อยู่ใน HomePage ดังนั้น FavoritesPage ซึ่งเป็นคนละ Route จะไม่สามารถเข้าถึง State นี้โดยตรง ต้องส่งข้อมูลข้าม Route หรือย้าย State ไปไว้ในตำแหน่งที่ทั้งสองหน้าสามารถเข้าถึงร่วมกันได้ ทำให้โค้ดยุ่งยากและเกิดการส่งข้อมูลที่ไม่จำเป็น
 ```
+<img width="1363" height="732" alt="image" src="https://github.com/user-attachments/assets/1e1fc033-1377-4f20-8b5f-26377211b21b" />
+<img width="1366" height="428" alt="image" src="https://github.com/user-attachments/assets/0e46194d-bd2a-4d2d-bb4c-8a7b626350bd" />
 
 ---
 
@@ -503,6 +505,10 @@ class HomePage extends StatelessWidget {
 ```image
 
 ```
+<img width="1366" height="433" alt="image" src="https://github.com/user-attachments/assets/3545f5c7-41e4-4f52-a159-92734253fff7" />
+<img width="1366" height="412" alt="image" src="https://github.com/user-attachments/assets/e13d562f-0ac8-46bd-ba7e-5ec5f0da6c16" />
+<img width="1366" height="299" alt="image" src="https://github.com/user-attachments/assets/ef35c495-48ce-46a2-8198-840e64935167" />
+<img width="1366" height="407" alt="image" src="https://github.com/user-attachments/assets/7e7ea243-31ea-4178-81b9-f2e917c42809" />
 
 ---
 
