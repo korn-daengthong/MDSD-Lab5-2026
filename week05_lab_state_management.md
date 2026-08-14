@@ -782,6 +782,38 @@ class HomePage extends ConsumerWidget {
 
 > ✅ **Checkpoint 4.2** เขียนตารางเปรียบเทียบสั้น ๆ ว่าตอนแปลงจาก Provider เป็น Riverpod ต้องเปลี่ยนอะไรบ้าง (เช่น `ChangeNotifier` → `StateNotifier`, `StatelessWidget` → `ConsumerWidget`, `context.watch` → `ref.watch`) อย่างน้อย 4 คู่เทียบ
 
+
+
+
+Provider	       Riverpod	                     ความหมาย
+ChangeNotifier	StateNotifier	                คลาสที่ใช้จัดการและเปลี่ยนแปลง State จาก FavoritesModel เป็น FavoritesNotifier
+ChangeNotifierProvider	StateNotifierProvider	วิธีลงทะเบียนและสร้าง Provider สำหรับ State
+StatelessWidget	ConsumerWidget	              Widget ที่ต้องการเข้าถึง Riverpod จะเปลี่ยนเป็น ConsumerWidget เพื่อให้ใช้ WidgetRef ได้
+context.watch<FavoritesModel>()	ref.watch(favoritesProvider)	อ่าน State และติดตามการเปลี่ยนแปลง เพื่อให้ UI rebuild อัตโนมัติ
+context.read<FavoritesModel>()	ref.read(favoritesProvider.notifier)	เข้าถึงตัวจัดการ State เพื่อเรียกเมธอด เช่น add() หรือ remove()
+ChangeNotifierProvider ใน main.dart	ProviderScope ใน main.dart	จุดเริ่มต้นสำหรับจัดการ State ของ Riverpod โดยครอบแอปไว้
+
+ตัวอย่างการเปลี่ยนโค้ดที่สำคัญในใบงานคือ:
+
+Provider                         Riverpod
+
+
+ChangeNotifier                   StateNotifier
+       ↓                              ↓
+FavoritesModel                   FavoritesNotifier
+
+
+ChangeNotifierProvider           StateNotifierProvider
+       ↓                              ↓
+context.watch()                  ref.watch()
+
+
+context.read()                   ref.read(...notifier)
+
+
+StatelessWidget                  ConsumerWidget
+<img width="1366" height="320" alt="image" src="https://github.com/user-attachments/assets/096505b9-cae6-4e21-97ec-a676b26e6e04" />
+
 ---
 
 ## ส่วนที่ 5 (ทำด้วยตนเอง): ออกแบบฟีเจอร์เพิ่มด้วยตัวเอง
